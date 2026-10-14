@@ -1,11 +1,20 @@
-# wiki-vinhedo — Memória de IA da Alma Gerais
+# wiki-vinhedo-codex — Memória de IA da Alma Gerais
 
-Base de conhecimento viva da vinícola **Alma Gerais** (sul de Minas Gerais), mantida por
-agentes de IA e inspirada no padrão [LLM Wiki do Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+Base de conhecimento viva da vinícola **Alma Gerais** (sul de Minas Gerais), mantida
+pelo Codex e inspirada no padrão [LLM Wiki do Andrej Karpathy](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
 
 O objetivo é dar aos nossos agentes uma **memória persistente e interligada** sobre tudo o que
 acontece no cultivo das uvas e na produção dos vinhos — para que eles consigam *ligar os pontos*
 ao longo do tempo e apoiar as decisões do time de campo, do enólogo e dos consultores.
+
+Este repositório, `almagerais-dev/wiki-vinhedo-codex`, é uma **cópia independente** de
+`almagerais-dev/wiki-vinhedo`. Sua operação e evolução acontecem aqui, sem sincronização
+automática ou alterações no repositório original. O conhecimento importado permanece preservado.
+
+As skills do Codex ficam em `.agents/skills/`; as versões do Cursor em `.cursor/skills/`
+permanecem preservadas. Consulte o [guia de uso no Codex](docs/uso-no-codex.md).
+As orientações de automação diária são documentação para uso futuro; nenhum agendamento é
+ativado por estes arquivos.
 
 ## Locais de cultivo
 
