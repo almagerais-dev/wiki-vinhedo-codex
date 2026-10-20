@@ -321,3 +321,30 @@ Não há dependências para instalar, nem serviço para subir, nem suíte de tes
   Relate erros, avisos e pendências separadamente; apresente o diff e os resultados antes de
   publicar. Não faça merge nem habilite auto-merge sem autorização explícita.
 - Guia de uso: [docs/uso-no-codex.md](docs/uso-no-codex.md).
+
+---
+
+## Piloto — Assistente de Campo sem Granola (captura supervisionada)
+
+Para **novos registros agrícolas relatados pelo agrônomo**, use o projeto ChatGPT
+`Alma Gerais | Assistente de Campo` e a skill
+`.agents/skills/registrar-atividade-campo/SKILL.md`.
+A captura oferece conversa guiada e relato contínuo. As fichas são revisadas e **aprovadas
+explicitamente** pelo agrônomo. Não confunda aprovação com publicação.
+
+Para transformar um **pacote aprovado** em fonte/eventos/índices, siga
+`.agents/skills/processar-registro-campo/SKILL.md` e
+`docs/piloto-assistente-campo/operacao-piloto.md`. O modelo de pacote está em
+`docs/piloto-assistente-campo/modelo-registro.md`. Um relato pode gerar múltiplos eventos,
+mas deve preservar a origem textual disponível e as correções. Fonte de chat confirmada **não é**
+transcrição literal. Não presume acesso a áudio ou a integração automática ChatGPT–Codex.
+
+O fluxo legado de `ingerir-gravacoes-granola` permanece documentado **para o acervo histórico**,
+mas não é obrigatório para novos relatos do campo. O script `granola-ingeridos.py` **não**
+deduplica novos `relato_id`/`evento_id`; confira esses identificadores separadamente.
+
+No piloto, nenhuma publicação é automática. Registros passam de
+`RASCUNHO`/`PENDENTE` → `APROVADO — AGUARDANDO PUBLICAÇÃO` → `PUBLICADO` apenas
+depois da verificação do commit remoto. Preserve `raw/` imutável, não incorpore
+planejamentos/recomendações como execuções e não modifique o repositório original.
+Antes de usar dados reais, verifique privacidade do repositório e do projeto ChatGPT.
