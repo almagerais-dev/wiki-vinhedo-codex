@@ -7,7 +7,7 @@ quadras: []
 tags: [tinta, mapa-plantio]
 fontes:
   - raw/mapa-plantio/2026-08-29-mapa-de-plantio-alma-gerais-vivert.json
-atualizado_em: 2026-08-29
+atualizado_em: 2026-10-26
 ---
 
 # Syrah
@@ -34,8 +34,9 @@ _A preencher por safra._
 
 ## Eventos ligados
 
-- [[2026-06-15-macaia-geada-q3]] — evento de exemplo da wiki; cita a quadra Q3, que **não** aparece
-  no mapa de plantio de 2026-08-29.
+Os eventos reais devem ser consultados pelos históricos dos [[setor-02]], [[setor-03]] e
+[[setor-10]], respeitando as variedades explicitamente informadas em cada fonte. O antigo
+exemplo de geada não documenta uma ocorrência e foi retirado desta página.
 
 ## Fontes
 

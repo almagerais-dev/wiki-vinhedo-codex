@@ -12,37 +12,33 @@ os índices mensais e abrir os eventos antes de responder com citações. Ausên
 significa ausência de evento; relações exigem defasagem, confiança e distinção entre correlação
 e causalidade. Uma consulta pode usar apenas as fontes locais.
 
-## Ingerir gravações, quando autorizado
+## Registrar pelo chat
 
-Peça a ingestão de uma janela definida e disponibilize o conector Granola autorizado. O Codex
-segue [ingerir-gravacoes-granola](../.agents/skills/ingerir-gravacoes-granola/SKILL.md): confirma
-conta/workspace, obtém a janela pelo registro local, classifica IDs e usa a transcrição literal.
-Sem conector ou verbatim, a ingestão fica bloqueada; o resumo não substitui a evidência.
+O operador relata diretamente aqui as operações e observações. Exemplo: “Hoje fizemos o
+desbrote no setor 3”. O agente segue
+[registrar-relatos-chat](../.agents/skills/registrar-relatos-chat/SKILL.md), esclarece dados
+faltantes na conversa, preserva a mensagem literal em `raw/` e atualiza eventos, índices mensais,
+setores e safra. Perguntas e operações planejadas não viram fatos realizados.
+O painel `wiki/pendencias.md` reúne dúvidas abertas e resoluções; atualize-o junto com o log.
+Exemplos didáticos ficam em `docs/exemplos/` e não são evidência de campo.
 
-`granola_id` garante idempotência. Fontes existentes em `raw/` são imutáveis; ambiguidades vão
-para `log.md`, que é append-only. Eventos novos precisam de fontes e âncoras temporais e entram
-nos índices mensais e na safra pertinente, preservando a rastreabilidade.
+Cada relato tem `registro_chat_id`; eventos citam esse identificador e o caminho da fonte.
+Mensagens de correção são fontes novas, ligadas ao relato anterior. Fontes existentes são
+imutáveis e o log é append-only. Datas dos fatos são distintas das datas de recebimento.
 
 ## Validar localmente
 
-Na raiz do checkout:
-
 ```bash
 python3 tools/validar-wiki.py
-python3 tools/granola-ingeridos.py
 ```
 
-Os comandos leem arquivos locais e não consultam APIs. O primeiro verifica estrutura e links;
-o segundo confere ingestões e páginas sem fonte. Ambos devem terminar com código 0. Relate os
-avisos e pendências separadamente. Não há build, servidor, dependências adicionais nem suíte de
-testes automatizados neste repositório. Revise `git diff` e `git status --short`, incluindo os
-arquivos novos, e apresente as alterações e a validação antes de publicar.
+Revise `git diff` e `git status --short`, incluindo arquivos novos, e apresente alterações,
+validação, avisos e pendências antes de publicar. Não há build ou servidor neste repositório.
 
-## Automação diária
+## Encerramento do fluxo anterior
 
-O [guia diário](../.agents/skills/ingerir-gravacoes-granola/automacao-diaria.md) contém a frequência
-sugerida, os pré-requisitos e as instruções para uma futura tarefa. A automação permanece inativa;
-sua ativação exige pedido explícito. As skills em `.cursor/skills/` continuam preservadas.
-
-Nesta adaptação operacional, não se executam ingestões, agendamentos nem APIs externas, e os
-conteúdos de `raw/`, `wiki/` e `dados-vivos/` permanecem integralmente preservados.
+Desde 2026-10-26, não se consultam notas do Granola nem se buscam transcrições, e não há rotina
+diária de coleta. Os guias de agendamento foram retirados. Nenhuma automação foi encontrada na
+conta do ChatGPT durante esta mudança. Agendamentos em sistemas externos não foram verificados.
+O acervo histórico mantém suas fontes e `granola_id`; `tools/granola-ingeridos.py` é apenas uma
+ferramenta opcional de auditoria local desse legado, sem requisito no atendimento por chat.

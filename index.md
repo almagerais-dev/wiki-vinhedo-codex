@@ -1,6 +1,6 @@
 ---
 tipo: indice
-atualizado_em: 2026-09-22
+atualizado_em: 2026-10-26
 ---
 
 # Índice da wiki-vinhedo
@@ -10,7 +10,9 @@ atualiza a cada ingestão. Veja as convenções em `AGENTS.md`.
 
 ## Visão geral
 
-- [[overview]] — síntese geral do vinhedo.
+- [[overview]] — síntese geral do vinhedo, com datas e limites de atualização.
+- [[pendencias]] — dúvidas abertas, limitações históricas e resoluções documentadas.
+- `docs/exemplos/exemplo-evento-geada.md` — demonstração fictícia, fora da base factual.
 
 ## Fontes brutas
 
@@ -18,8 +20,8 @@ atualiza a cada ingestão. Veja as convenções em `AGENTS.md`.
 - `raw/fichas-tecnicas/comercial/` e `raw/fichas-tecnicas/biologicos/` — fichas de produtos.
 - `raw/analises/`, `raw/qualidade-uva/`, `raw/qualidade-vinho/` e `raw/consultoria/` — documentos
   consolidados, sem subdivisões.
-- `raw/registros-manejo/` e `raw/registros-ciclos-videira/` — registros datados de campo. São 48
-  gravações do Granola ingeridas: 43 em `raw/registros-manejo/` (operações) e 5 em
+- `raw/registros-manejo/` e `raw/registros-ciclos-videira/` — registros datados de campo. O acervo histórico contém 54
+  gravações do Granola ingeridas: 49 em `raw/registros-manejo/` (operações) e 5 em
   `raw/registros-ciclos-videira/` (início da brotação, gravadas em 2026-09-15).
 - `raw/mapa-plantio/` — mapa georreferenciado, imagem rotulada com a numeração operacional dos
   setores e confirmações cadastrais.
@@ -131,7 +133,6 @@ Fichas dos 95 PDFs em `raw/fichas-tecnicas/comercial/` e 1 PDF em `raw/fichas-te
 
 - `_modelo-evento` — gabarito para eventos datados.
 - [[2026-01-14-macaia-recebimentos-uva-safra-2026]] — recebimentos consolidados da safra 2026.
-- [[2026-06-15-macaia-geada-q3]] — exemplo de evento.
 
 ## Históricos mensais por setor
 
@@ -165,12 +166,12 @@ Fichas dos 95 PDFs em `raw/fichas-tecnicas/comercial/` e 1 PDF em `raw/fichas-te
 
 ## Skills
 
-- `.cursor/skills/ingerir-gravacoes-granola/` — procedimento de ingestão das gravações do Granola.
-- `.cursor/skills/consultar-historico-setorial/` — consulta ao histórico de setores e ruas.
+- `.agents/skills/registrar-relatos-chat/` — registro das mensagens do operador e esclarecimentos no chat.
+- `.agents/skills/consultar-historico-setorial/` — consulta ao histórico de setores e ruas.
 
 ## Ferramentas
 
-- `tools/granola-ingeridos.py` — registro de idempotência do Granola: lista as gravações já
-  ingeridas, o estado de cada uma e a janela a consultar. Rodar **antes** de cada ingestão.
+- `tools/granola-ingeridos.py` — auditoria local opcional do acervo histórico do Granola;
+  não faz parte do registro pelo chat e não autoriza novas buscas.
 - `tools/validar-wiki.py` — lint estrutural (frontmatter, wikilinks, âncoras temporais, fontes
   citadas). Rodar **ao fechar** cada ingestão.
