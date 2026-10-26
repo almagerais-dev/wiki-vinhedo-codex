@@ -5,7 +5,7 @@ description: Consulta o histórico de setores e ruas do vinhedo da Alma Gerais. 
 
 # Consultar histórico setorial
 
-Use este procedimento para responder perguntas de campo sobre Macaia. A ingestão diária do Granola
+Use este procedimento para responder perguntas de campo sobre Macaia. O registro dos relatos pelo chat
 não usa esta skill: ela apenas registra e indexa fatos novos.
 
 No Codex, leia `AGENTS.md` inteiro e use o checkout existente de

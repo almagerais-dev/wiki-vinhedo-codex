@@ -1,21 +1,12 @@
 #!/usr/bin/env python3
-"""Registro de idempotência da ingestão do Granola.
+"""Auditoria local do acervo histórico do Granola (fluxo encerrado em 2026-10-26).
 
-Responde a duas perguntas antes de qualquer nova ingestão:
+Lê fontes, páginas e log; não acessa APIs nem recomenda coleta ou ingestão nova.
+Fontes sem página podem ser pendências, correções ou evidência complementar;
+verifique `wiki/pendencias.md`, `fontes` dos eventos e o log antes de classificá-las.
+O registro pelo chat usa `registro_chat_id` e não depende deste utilitário.
 
-1. quais `granola_id` já entraram na wiki e em que estado;
-2. de que data em diante vale consultar o Granola.
-
-A fonte da verdade é o próprio repositório: cada gravação ingerida deixa um arquivo em
-`raw/registros-manejo/` ou `raw/registros-ciclos-videira/` com `granola_id` no frontmatter. Uma
-gravação pode estar registrada como fonte sem ter gerado evento — é o caso das que ficaram em
-`pendencia` por falta de setor, data ou dose. Essas **não** devem ser reingeridas como fonte nova,
-mas continuam esperando eventos quando a informação faltante chegar.
-
-Uso:
-
-    python3 tools/granola-ingeridos.py                 # relatório completo
-    python3 tools/granola-ingeridos.py <id> [<id> ...] # classifica ids vindos do Granola
+Uso: python3 tools/granola-ingeridos.py [<id> ...]
 """
 
 from __future__ import annotations
@@ -98,11 +89,11 @@ def main(argv: list[str]) -> int:
                     print(f"NO LOG      {gid} — sem fonte, mas citada no log.md; não reingerir "
                           f"sem ler a entrada:\n            {nota}")
                 else:
-                    print(f"NOVO        {gid} — nenhuma fonte no repositório; ingerir")
+                    print(f"SEM FONTE   {gid} — ID não localizado no acervo legado; nenhuma ingestão é executada")
                 continue
             quantas = len(paginas.get(gid, []))
             estado = "JA INGERIDO" if quantas else "SO FONTE   "
-            extra = "" if quantas else " — sem página na wiki; conferir a pendência no log.md"
+            extra = "" if quantas else " — sem página com este ID primário; conferir fontes dos eventos, painel e log"
             print(f"{estado} {gid} -> {dados['fonte']} ({quantas} página(s)){extra}")
         return 0
 
@@ -110,8 +101,7 @@ def main(argv: list[str]) -> int:
     print(f"Última entrada `ingest` no log.md: {ultima_ingestao()}")
     if gravacoes:
         print(f"Gravação mais recente já ingerida: {gravacoes[-1][1]['gravado_em']}")
-        print("Consultar o Granola dessa data em diante e classificar cada id pelo modo com "
-              "argumentos.\n")
+        print("Acervo legado: não consultar o Granola nem buscar transcrições.\n")
     print(f"{len(registro)} gravação(ões) ingerida(s):\n")
 
     for gid, dados in gravacoes:
@@ -121,8 +111,8 @@ def main(argv: list[str]) -> int:
 
     orfas = [gid for gid in registro if not paginas.get(gid)]
     if orfas:
-        print("\nFontes registradas sem página na wiki (não reingerir como fonte; aguardam a "
-              "resolução da pendência em log.md):")
+        print("\nFontes sem página com seu ID primário (podem ser correções ou pendências; "
+              "verificar fontes dos eventos, wiki/pendencias.md e log.md):")
         for gid in orfas:
             print(f"  {gid} — {registro[gid]['titulo']}")
 

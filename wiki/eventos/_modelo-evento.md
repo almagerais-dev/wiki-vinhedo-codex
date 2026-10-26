@@ -13,7 +13,7 @@ ciclo: null
 estagio_fenologico: <dormencia | brotacao | floracao | pegamento | crescimento-baga | veraison | maturacao | colheita | pos-colheita>
 tags: []
 fontes: []
-granola_id: null
+registro_chat_id: <identificador-da-fonte>
 atualizado_em: <AAAA-MM-DD>
 ---
 
@@ -31,7 +31,7 @@ _Descrição objetiva do fato observado/medido. **Sem** especular causa aqui._
 - **Rua(s):** _usar identificadores canônicos ou `—` quando não informadas._
 - **Quadra(s) / variedade(s):** [[<quadra>]] / [[<variedade>]]
 - **Estágio fenológico:** ver frontmatter.
-- **Origem Granola:** ver `granola_id` e `fontes` no frontmatter.
+- **Origem chat:** ver `registro_chat_id` e `fontes` no frontmatter.
 
 ## Interpretações relacionadas
 

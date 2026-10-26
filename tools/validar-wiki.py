@@ -3,7 +3,7 @@
 
 Verifica o que dá para verificar por máquina, sem julgar conteúdo:
 
-- todo arquivo `.md` da wiki começa com frontmatter YAML parseável (`raw/` é livre por ser fonte
+- todo arquivo `.md` da wiki começa com frontmatter com campos YAML simples (não é um parser YAML completo) (`raw/` é livre por ser fonte
   bruta imutável);
 - todo wikilink `[[alvo]]` aponta para um arquivo `.md` existente no repositório; placeholders de
   gabarito (`[[<setor>]]`) e os exemplos do `AGENTS.md` ficam fora da conferência;
@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-PASTAS = ["wiki", "dados-vivos", "raw"]
+PASTAS = ["wiki", "dados-vivos", "raw", "docs"]
 ARQUIVOS_RAIZ = ["index.md", "log.md", "AGENTS.md", "README.md"]
 
 ANCORAS_EVENTO = ["tipo", "categoria", "local", "safra", "estagio_fenologico"]
@@ -78,7 +78,7 @@ def main() -> int:
 
         if caminho.name in ("log.md", "AGENTS.md", "README.md"):
             continue
-        if rel.parts[0] == "raw":
+        if rel.parts[0] == "raw" or (rel.parts[0] == "docs" and "exemplos" not in rel.parts):
             continue
 
         campos = frontmatter(texto)
@@ -88,6 +88,10 @@ def main() -> int:
 
         tipo = campos.get("tipo", "")
         gabarito = caminho.name.startswith("_modelo-")
+
+        if rel.parts[:2] == ("wiki", "eventos") and not gabarito:
+            if tipo != "evento" or re.search(r"(?im)^>.*(?:fict[íi]ci[oa]|\bexemplo\b)", texto):
+                erros.append(f"{rel}: material de exemplo ou tipo não factual em wiki/eventos; mover para docs/exemplos")
 
         if tipo == "evento" and not gabarito:
             categoria = campos.get("categoria", "")

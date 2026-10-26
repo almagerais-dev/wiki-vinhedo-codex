@@ -1,5 +1,5 @@
 ---
-tipo: evento
+tipo: exemplo
 categoria: clima
 data: 2026-06-15
 local: macaia
@@ -12,9 +12,11 @@ fontes: []
 atualizado_em: 2026-07-08
 ---
 
-# 2026-06-15 — Geada na quadra Q3 (Macaia)
+# Exemplo fictício — geada (não ocorreu como fato documentado)
 
-> Evento de **exemplo** demonstrando a ancoragem temporal e a separação fato/interpretação.
+> Material didático, fora da base factual. Data, quadra e ocorrência são fictícias.
+> Não usar em consultas, linhas do tempo, recomendações ou correlações do vinhedo.
+> Para criar um registro real, use `wiki/eventos/_modelo-evento.md` e fontes verificáveis.
 
 ## O que aconteceu (fato)
 

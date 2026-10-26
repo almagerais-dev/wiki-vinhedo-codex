@@ -11,10 +11,10 @@ Este repositório, `almagerais-dev/wiki-vinhedo-codex`, é uma **cópia independ
 `almagerais-dev/wiki-vinhedo`. Sua operação e evolução acontecem aqui, sem sincronização
 automática ou alterações no repositório original. O conhecimento importado permanece preservado.
 
-As skills do Codex ficam em `.agents/skills/`; as versões do Cursor em `.cursor/skills/`
-permanecem preservadas. Consulte o [guia de uso no Codex](docs/uso-no-codex.md).
-As orientações de automação diária são documentação para uso futuro; nenhum agendamento é
-ativado por estes arquivos.
+As skills do Codex ficam em `.agents/skills/`; os arquivos em `.cursor/skills/`
+encaminham para os mesmos procedimentos canônicos. Consulte o [guia de uso no Codex](docs/uso-no-codex.md).
+Os registros de campo são informados pelo operador diretamente no chat. Não há coleta diária
+nem busca de transcrições; o fluxo anterior do Granola foi encerrado.
 
 ## Locais de cultivo
 
@@ -40,7 +40,9 @@ Navegação: `index.md` (catálogo de páginas) e `log.md` (histórico cronológ
 
 ## Como usar (resumo)
 
-- **Ingerir**: coloque uma fonte em `raw/` e peça ao agente para processá-la.
+- **Registrar pelo chat**: relate o que aconteceu, quando e em quais setores. O agente esclarece
+  dúvidas no chat, preserva a mensagem como fonte e atualiza eventos e históricos da wiki.
+- **Outras fontes**: coloque documentos em `raw/` e peça ao agente para processá-los.
 - **Pesquisar**: o agente pode buscar conhecimento externo, priorizando estudos de viticultura em
   clima tropical sem excluir referências internacionais relevantes.
 - **Consultar setores**: o agente usa históricos mensais para localizar os eventos pertinentes, sem
